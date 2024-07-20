@@ -6,14 +6,14 @@
 	"android_app_version": "1.0.0",
 	"firebaseProjectId": "tagalong-3f15e",
 	"googleApiKeys": {
-		"ios": "AIzaSyCjMIOrIAK0udmm79tFCtUyDOKKPpoSkrw",
-		"android": "AIzaSyCjMIOrIAK0udmm79tFCtUyDOKKPpoSkrw",
-		"web": "AIzaSyCjMIOrIAK0udmm79tFCtUyDOKKPpoSkrw",
-		"server": "AIzaSyCjMIOrIAK0udmm79tFCtUyDOKKPpoSkrw"
+		"ios": "AIzaSyCjMIOrIAK0udmm79tFCtUyDOKKPpoSkXX",
+		"android": "AIzaSyCjMIOrIAK0udmm79tFCtUyDOKKPpoSkXX",
+		"web": "AIzaSyCjMIOrIAK0udmm79tFCtUyDOKKPpoSkXX",
+		"server": "AIzaSyCjMIOrIAK0udmm79tFCtUyDOKKPpoSkXX"
 	},
 	"expo_owner": "makeri001",
 	"expo_slug": "tagalong",
 	"expo_project_id": "82b1a7d4-fbac-44d7-998e-07b7a1d37870",
 	"admin_email": "jerryisuwamakeri@gmail.com",
-	"purchase_code": "tagalongforyou"
+	
 }
