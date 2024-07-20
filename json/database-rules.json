@@ -1,0 +1,157 @@
+{
+    "rules": {
+        "cancel_reason": {
+            ".read": "auth != null",
+            ".write": "root.child('users').child(auth.uid).child('usertype').val() === 'admin'"
+        },
+        "notifications": {
+            ".read": "root.child('users').child(auth.uid).child('usertype').val() === 'admin'",
+            ".write": "root.child('users').child(auth.uid).child('usertype').val() === 'admin'"
+        },
+        "settings": {
+            ".read": "true",
+            ".write": "root.child('users').child(auth.uid).child('usertype').val() === 'admin'"
+        },
+        "payment_settings": {
+            ".read": "root.child('users').child(auth.uid).child('usertype').val() === 'admin'",
+            ".write": "root.child('users').child(auth.uid).child('usertype').val() === 'admin'"
+        },
+        "promos": {
+            ".read": "auth != null",
+            ".write": "root.child('users').child(auth.uid).child('usertype').val() === 'admin' || root.child('users').child(auth.uid).child('usertype').val() === 'customer'"
+        },
+        "cartypes": {
+            ".read": "true",
+            ".write": "root.child('users').child(auth.uid).child('usertype').val() === 'admin'"
+        },
+        "savedAddresses": {
+            ".read": "auth != null",
+            ".write": "root.child('users').child(auth.uid).child('usertype').val() === 'customer' || root.child('users').child(auth.uid).child('usertype').val() === 'driver'"
+        },
+        "otp_auth_requests":{
+            ".read": "false",
+            ".write": "false",
+            ".indexOn": [
+              "mobile"
+            ]
+        },
+        "smsConfig": {
+            ".read": "root.child('users').child(auth.uid).child('usertype').val() === 'admin'",
+            ".write": "root.child('users').child(auth.uid).child('usertype').val() === 'admin'"  
+        },
+        "cars": {
+            ".read": "auth != null",
+            ".write": "root.child('users').child(auth.uid).child('usertype').val() === 'admin' || root.child('users').child(auth.uid).child('usertype').val() === 'fleetadmin' || root.child('users').child(auth.uid).child('usertype').val() === 'driver'",
+            ".indexOn": [
+                "driver",
+                "fleetadmin"
+            ]
+        },
+        "chats": {
+            ".read": "auth != null",
+            "$bookingid": {
+                ".write": "root.child('bookings').child($bookingid).child('customer').val()===auth.uid || root.child('bookings').child($bookingid).child('driver').val()===auth.uid",
+                "messages": {
+                    "$uid": {
+                        ".write": "$uid === auth.uid",
+                        "$mid": {
+                            ".write": "newData.child('from').val() === auth.uid"
+                        }
+                    }
+                }
+            }
+        },
+        "users": {
+            ".read": "auth != null",
+            ".write": "root.child('users').child(auth.uid).child('usertype').val() === 'admin' || root.child('users').child(auth.uid).child('usertype').val() === 'fleetadmin'",
+            "$uid": {
+                ".write": "auth != null && auth.uid===$uid",
+                "$usernode": {
+                    ".write": "$usernode==='approved' || $usernode==='rating' || $usernode==='driverActiveStatus' || $usernode==='queue' || $usernode==='savedAddresses'"
+                }
+            },
+            ".indexOn": [
+                "queue",
+                "referralId",
+                "fleetadmin",
+              	"pushToken",
+                "usertype"
+            ]
+        },
+        "locations": {
+            ".read": "auth != null",
+            ".write": "auth != null",
+            "$uid": {
+                ".write": "auth != null && auth.uid===$uid"
+            }
+        },
+        "walletHistory":{
+            ".read": "auth != null",
+            ".write": "auth != null"
+        },
+        "userNotifications":{
+            ".read": "auth != null",
+            ".write": "auth != null"
+        },
+        "userRatings":{
+            ".read": "auth != null",
+            ".write": "auth != null"
+        },
+        "withdraws": {
+            ".read": "auth != null",
+            ".write": "root.child('users').child(auth.uid).child('usertype').val() === 'admin'",
+            "$withdrawid": {
+                ".write": "newData.child('uid').val()===auth.uid"
+            }
+        },
+        "bookings": {
+            ".read": "auth != null",
+            ".write": "root.child('users').child(auth.uid).child('usertype').val() === 'admin'",
+            "$bookingid": {
+                ".write": "newData.child('fleetadmin').val()===auth.uid || newData.child('customer').val()===auth.uid || newData.child('driver').val()===auth.uid || root.child('bookings').child($bookingid).child('requestedDrivers').child(auth.uid).val()===true"
+            },
+            ".indexOn": [
+                "status",
+                "customer",
+                "driver",
+                "requestedDrivers",
+                "fleetadmin"
+            ]
+        },
+        "tracking": {
+            ".read": "auth != null",
+            ".write": "root.child('users').child(auth.uid).child('usertype').val() === 'admin'",
+            "$bookingid": {
+                ".write": "root.child('bookings').child($bookingid).child('driver').val()===auth.uid"
+            },
+            ".indexOn": [
+                "status",
+                "customer",
+                "driver"
+            ]
+        },
+        "languages": {
+            ".read": "true",
+            ".write": "root.child('users').child(auth.uid).child('usertype').val() === 'admin'",
+            ".indexOn": [
+              "default"
+            ]
+        },
+        "smtpdata": {
+            ".read": "root.child('users').child(auth.uid).child('usertype').val() === 'admin'",
+            ".write": "root.child('users').child(auth.uid).child('usertype').val() === 'admin'"  
+        },
+        "sos":{
+            ".read": "auth != null",
+            ".write": "auth != null"
+        },
+        "complain": {
+            ".read": "auth != null",
+            ".write": "auth != null"
+        },
+        "usedreferral": {
+            ".read" : "true",
+            ".write" : "true"
+          }
+    }
+}

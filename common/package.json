@@ -1,0 +1,15 @@
+{
+  "name": "common",
+  "version": "1.0.0",
+  "description": "Common Packages",
+  "private": true,
+  "main": "src/index.js",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.0",
+    "firebase": "10.7.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native-base64": "^0.2.1",
+    "redux-thunk": "2.4.2"
+  }
+}
